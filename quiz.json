@@ -1,0 +1,345 @@
+[
+	{
+		"Pergunta":"O segundo maior bioma do Brasil e ao qual a região de Barra do Garças pertence é:",
+		"Respostas":[
+						{"resp":"Mata Atlântica",
+						"flag":0
+						},
+						{"resp":"Floresta Amazônica",
+						"flag":0
+						},
+						{"resp":"Caatinga",
+						"flag":0
+						},
+						{"resp":"Cerrado",
+						"flag":1
+						}
+						]
+	},
+	{
+		"Pergunta":"São espécies de mamíferos:",
+		"Respostas":[
+						{"resp":"lobo-guará, arara-canindé onça-pintada",
+						"flag":0
+						},
+						{"resp":"Seriema, tamanduá-bandeira, borboleta",
+						"flag":0
+						},
+						{"resp":"jaguatirica, jacaré, maguari",
+						"flag":0
+						},
+						{"resp":"tatu-peba, lobo-guará, onça-pintada",
+						"flag":1
+						}
+						]
+	},
+	{
+		"Pergunta":"Qual ave é considerada a “voz” do Cerrado?",
+		"Respostas":[
+						{"resp":"Seriema",
+						"flag":1
+						},
+						{"resp":"Ema",
+						"flag":0
+						},
+						{"resp":"Bem-te-vi",
+						"flag":0
+						},
+						{"resp":"Arara-canindé",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"Qual espécie de peixe de escama e que vive em águas continentais é considerada a maior do Brasil?",
+		"Respostas":[
+						{"resp":"Pacu",
+						"flag":0
+						},
+						{"resp":"Tucunaré",
+						"flag":0
+						},
+						{"resp":"Pirarucu",
+						"flag":1
+						},
+						{"resp":"Matrinchã",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"São vertebrados amniotas:",
+		"Respostas":[
+						{"resp":"répteis, aves e mamíferos",
+						"flag":1
+						},
+						{"resp":"répteis, peixes e anfíbios",
+						"flag":0
+						},
+						{"resp":"anfíbios, aves e mamíferos",
+						"flag":0
+						},
+						{"resp":"peixes, anfíbios e répteis",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"O maior bioma do Brasil, em extensão, é:",
+		"Respostas":[
+						{"resp":"a Mata Atlântica",
+						"flag":0
+						},
+						{"resp":"a Caatinga",
+						"flag":0
+						},
+						{"resp":"a Floresta Amazônica",
+						"flag":1
+						},
+						{"resp":"o Cerrado",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"São considerados insetos:",
+		"Respostas":[
+						{"resp":"as borboletas, os besouros, as aranhas",
+						"flag":0
+						},
+						{"resp":"as formigas, as borboletas, os gafanhotos",
+						"flag":1
+						},
+						{"resp":"os escorpiões, os grilos e as libélulas",
+						"flag":0
+						},
+						{"resp":"os amblipígeos, os carrapatos, as moscas",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"Qual a ave que bota o maior ovo?",
+		"Respostas":[
+						{"resp":"joão-de-barro",
+						"flag":0
+						},
+						{"resp":"beija-flor",
+						"flag":0
+						},
+						{"resp":"tucano",
+						"flag":0
+						},
+						{"resp":"ema",
+						"flag":1
+						}
+						]
+	},
+	{
+		"Pergunta":"Os ouriços-do-mar, as bolachas-da-praia e as estrelas-do-mar são animais:",
+		"Respostas":[
+						{"resp":"moluscos",
+						"flag":0
+						},
+						{"resp":"equinodermos",
+						"flag":1
+						},
+						{"resp":"crustáceos",
+						"flag":0
+						},
+						{"resp":"artrópodes",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"Os artrópodes que possuem o corpo dividido em cabeça, tórax e abdômen, possuem um par de antenas e três pares de pernas são:",
+		"Respostas":[
+						{"resp":"crustáceos",
+						"flag":0
+						},
+						{"resp":"miriápodes",
+						"flag":0
+						},
+						{"resp":"insetos",
+						"flag":1
+						},
+						{"resp":"quelicerados",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"O inseto vetor da doença de Chagas é o:",
+		"Respostas":[
+						{"resp":"barbeiro",
+						"flag":1
+						},
+						{"resp":"mosquito",
+						"flag":0
+						},
+						{"resp":"abelha",
+						"flag":0
+						},
+						{"resp":"pernilongo",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"As águas-vivas são animais do filo dos:",
+		"Respostas":[
+						{"resp":"poríferos",
+						"flag":0
+						},
+						{"resp":"moluscos",
+						"flag":0
+						},
+						{"resp":"nematoides",
+						"flag":0
+						},
+						{"resp":"cnidários",
+						"flag":1
+						}
+						]
+	},
+	{
+		"Pergunta":"O cisticerco, que causa a doença chamada cisticercose, é a larva encistada do verme:",
+		"Respostas":[
+						{"resp":"lombriga",
+						"flag":0
+						},
+						{"resp":"oxiúro",
+						"flag":0
+						},
+						{"resp":"tênia ou solitária",
+						"flag":1
+						},
+						{"resp":"esquistossomo",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"Dentre os animais, qual é o único em que o macho fica grávido?",
+		"Respostas":[
+						{"resp":"cachorro",
+						"flag":0
+						},
+						{"resp":"cavalo-marinho",
+						"flag":1
+						},
+						{"resp":"lobo-guará",
+						"flag":0
+						},
+						{"resp":"jacaré",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"Qual desses animais não é venenoso?",
+		"Respostas":[
+						{"resp":"escorpião",
+						"flag":0
+						},
+						{"resp":"jararaca",
+						"flag":0
+						},
+						{"resp":"carrapato",
+						"flag":1
+						},
+						{"resp":"cascavel",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"Um animal que possui vértebras, tem 4 patas, locomove-se por saltos, respira por pulmões, tem a pele lisa e úmida é um:",
+		"Respostas":[
+						{"resp":"sapo",
+						"flag":1
+						},
+						{"resp":"jacaré",
+						"flag":0
+						},
+						{"resp":"lagarto",
+						"flag":0
+						},
+						{"resp":"peixe",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"Os golfinhos, botos e baleias vivem na água e são:",
+		"Respostas":[
+						{"resp":"mamíferos",
+						"flag":1
+						},
+						{"resp":"peixes",
+						"flag":0
+						},
+						{"resp":"répteis",
+						"flag":0
+						},
+						{"resp":"invertebrados",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"São animais que botam ovos:",
+		"Respostas":[
+						{"resp":"macaco e galinha",
+						"flag":0
+						},
+						{"resp":"jacaré e lobo-guará",
+						"flag":0
+						},
+						{"resp":"tartaruga e tucano",
+						"flag":1
+						},
+						{"resp":"onça-pintada e quati",
+						"flag":0
+						}
+						]
+	},
+	{
+		"Pergunta":"São animais invertebrados pertencentes ao filo dos moluscos:",
+		"Respostas":[
+						{"resp":"minhoca e solitária",
+						"flag":0
+						},
+						{"resp":"besouro e caramujo",
+						"flag":0
+						},
+						{"resp":"lesma e lombriga",
+						"flag":0
+						},
+						{"resp":"polvo e lula",
+						"flag":1
+						}
+						]
+	},
+	{
+		"Pergunta":"Dos vertebrados abaixo, o único que tem esqueleto formado por cartilagem, é:",
+		"Respostas":[
+						{"resp":"jacaré",
+						"flag":0
+						},
+						{"resp":"quati",
+						"flag":0
+						},
+						{"resp":"arraia",
+						"flag":1
+						},
+						{"resp":"ema",
+						"flag":0
+						}
+						]
+	}
+
+
+
+]

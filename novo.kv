@@ -1,0 +1,660 @@
+<Gerenciador>:
+	Menu:#primeira a ser exibida
+		name:'menu'
+	Jogo:
+		name:'jogo'
+	Quiz:
+		name:'quiz'
+	Ranking:
+		name:'ranking'
+
+<Menu>:
+	BoxLayout:
+		orientation:'vertical'
+		padding:root.width*0.10,root.height*0.1 #preencher
+		spacing:'10dp' #espacamento
+		canvas:
+			Color:
+				rgba: 1,1,1,1 #rgb max 1
+			Rectangle:
+				size:self.size
+				pos:self.pos
+		Image:
+			source:'imagens/logo.png'
+			size_hint: 1,1
+			allow_stretch:True
+		Botao:
+			id:button1
+			text:'Jogo da memória'
+			on_release:app.root.current='jogo'
+
+		Botao:
+			id:button3
+			text:'Quiz'
+			on_release:
+				app.root.current='quiz'
+				
+		# Botao:
+		# 	id:button4
+		# 	text:'Placar'
+		# 	on_release:app.root.current='ranking'
+
+<Botao@ButtonBehavior+LabelBotao>:
+	pos_hint: {'center_x':.5,'center_y':.5}
+	canvas.before:
+
+		Color:
+			rgba: 0.30,0.14,0,1 #marrom 77/255,38/255,0,1 #azul 0.1,0.5,0.7,1
+		Ellipse:
+			pos:self.pos
+			size:self.height,self.height
+		Ellipse:
+			pos:self.x+self.width-self.height,self.y
+			size:self.height,self.height
+		Rectangle:
+			pos:self.x+self.height/2.0,self.y
+			size:self.width-self.height,self.height
+
+<Jogo>:
+	BoxLayout:
+		id:box
+
+		orientation:'vertical'
+		
+		canvas.before:
+			Color:
+				rgba: 1,1,1,1
+			Rectangle:
+				size:self.size
+				pos:self.pos
+		ActionBar:
+			pos_hint: {'top':1}  #na parte superior da tela'
+			background_color: 0, 0, 0, 1
+
+			ActionView:             
+				ActionPrevious:
+					app_icon: 'imagens/voltar.png'  
+					on_release:root.previous_screen_limpa()
+				
+		BoxLayout:
+			id:tbox
+			pos_hint:{'top':1}
+			orientation:'vertical'
+			#padding:root.width*0.10,root.height*0.1 #preencher
+			#spacing:'10dp' #espacamento
+			LabelBotao:
+
+				#pos_hint:{'center_x':.5,'center_y':.5}
+				pos_hint:{'top':1}
+				text:"Selecione a quantidade de imagens para o novo jogo"
+				height:'100dp'
+				color:0,0,0,1
+				#size_hint_y:None
+				#height:self.height
+				canvas.before:
+					Color:
+						rgba:0.33,0.17,0.01,0
+					Rectangle:
+						pos:self.pos
+						size:self.size
+
+			GridLayout:
+				id:botaoiniciar
+				orientation:'vertical'
+				#pos_hint: {'top':.7}
+				pos_hint:{'top':1}
+				size_hint_y:None
+				width:self.minimum_height
+				padding:15
+				spacing:20
+				cols:3
+
+				Botao:
+					text:'4'
+					size_hint:0.2,0.2
+					on_release:
+						root.ids.box.remove_widget(root.ids.tbox)
+						root.ids.box.remove_widget(root.ids.tbox2P)	
+						root.ids.box.remove_widget(root.ids.label)   
+						root.addImagem(int(self.text))
+				Botao:
+					size_hint:0.2,0.2
+					text:'6'
+					on_release:
+						root.ids.box.remove_widget(root.ids.tbox)
+						root.ids.box.remove_widget(root.ids.tbox2P)
+						root.ids.box.remove_widget(root.ids.label)
+						root.addImagem(int(self.text))
+				Botao:
+					size_hint:0.2,0.2
+					text:'10'
+					on_release:
+						root.ids.box.remove_widget(root.ids.tbox)
+						root.ids.box.remove_widget(root.ids.tbox2P)
+						root.ids.box.remove_widget(root.ids.label)
+						root.addImagem(int(self.text))
+		BoxLayout:
+			id:label
+			orientation:'vertical'
+			size_hint_y:None
+			height:self.minimum_height
+			# padding:root.width*0.07,root.height*0.01 #preencher
+			# spacing:'10dp' #espacamento
+			canvas.before:
+				Color:
+					rgba:0.10,0.05,0,0
+				RoundedRectangle:
+					size:self.size
+					pos:self.pos
+					radius:[25,25]
+					
+
+		BoxLayout:
+			id:tbox2P
+			orientation:'vertical'
+			size_hint_y:None
+			height:5*dp(50)
+			padding:root.width*0.07,root.height*0.02 #preencher
+			#spacing:'0dp' #espacamento
+			BoxLayout:
+				id:tbox2
+				orientation:'vertical'
+				#padding:root.width*0.10,root.height*0.10 #preencher
+				#spacing:'10dp' #espacamento
+				canvas.before:
+					Color:
+						rgba:0.10,0.05,0,1
+					RoundedRectangle:
+						size:self.size
+						pos:self.pos
+						radius:[25,25]
+		
+		GridLayout:
+			id:gridlayout
+			size_hint_y:None 
+			height:0  
+			spacing:10
+			cols:4
+			canvas.before:
+				Color:
+					rgba:0.37,0.17,0.01,0
+				Rectangle:
+					pos:self.pos
+					size:self.size
+				
+<Pergunta>:
+	orientation:'vertical'
+	id:pergunta
+	rgba:0,0,0,.4
+	canvas.before:
+		Color:
+			rgba:self.rgba
+		# Rectangle:
+		# 	pos:self.pos
+		# 	size:self.size
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [25,25]
+	size_hint_y:None
+	height:self.minimum_height
+
+	Label:
+		id:perg
+		text:''
+		color: 0,0,0,1
+		size_hint_y:None
+		text_size:self.width-self.width*0.10,None #buga
+		height:self.texture_size[1]
+		halign: 'center'
+		valign: 'center'
+		font_size:'25dp'
+		pos_hint:{'center_x':.5,'center_y':.5}
+		canvas.before:
+			Color:
+				rgba:1,0,0,0
+			RoundedRectangle:
+				pos:self.pos
+				size:self.size
+				radius: [25,25]
+
+
+	GridLayout:
+		
+		cols:2
+		pos_hint: {'center_x':.5,'center_y':1}
+		size_hint_y: None  
+		height: self.minimum_height
+		padding:root.width*0.05,root.height*0.05 #preencher
+		spacing:'10dp' #espacamento
+
+		CheckBox:
+			id:r10
+			name:'checkbox'
+			size_hint_x:None
+			color:0,0,1,.8
+			pos_hint:{'y':0}
+			on_release:
+				root.verifica(flag=self.flag)
+				#root.pop()
+			#disabled:True desabilitar a selecao
+			#propagar um active 1 ou 0
+		
+		Label:
+			id:r1
+			name:'label'
+			text:'Possivel resposta 1'
+			halign: 'left'
+			valign: 'middle'
+			color:0,0,0,1
+			text_size:self.size
+			size_hint_y:None
+			height:'45dp'
+			pos_hint:{'center':1}
+
+			canvas.before:
+				Color:
+					rgba:0,0,1,0#identificar o certo e os errados
+				Rectangle:
+					pos:self.pos
+					size:self.size
+		
+		CheckBox:
+			id:r20
+			name:'checkbox'
+			size_hint_x:None
+			color:0,0,1,.8
+			on_release:
+				root.verifica(flag=self.flag)
+
+		Label:
+			id:r2
+			name:'label'
+			text:'Possivel resposta 2'
+			halign: 'left'
+			valign: 'middle'
+			color:0,0,0,1
+			text_size:self.size
+			size_hint_y:None
+			height:'45dp'
+			canvas.before:
+				Color:
+					rgba:0,1,0,0#identificar o certo e os errados
+				Rectangle:
+					pos:self.pos
+					size:self.size
+		CheckBox:
+			id:r30
+			name:'checkbox'
+			size_hint_x:None
+			color:0,0,1,.8
+			on_release:
+				root.verifica(flag=self.flag)
+		Label:
+			id:r3
+			name:'label'
+			text:'Possivel resposta 3'
+			halign: 'left'
+			valign: 'middle'
+			color:0,0,0,1
+			text_size:self.size
+			size_hint_y:None
+			height:'45dp'
+		CheckBox:
+			id:r40
+			name:'checkbox'
+			size_hint_x:None
+			color:0,0,1,.8
+			on_release:
+				root.verifica(flag=self.flag)
+		Label:
+			id:r4
+			name:'label'
+			text:'Possivel resposta 4'
+			halign: 'left'
+			valign: 'middle'
+			color:0,0,0,1
+			text_size:self.size
+			size_hint_y:None
+			height:'45dp'
+
+				
+<Quiz>:
+	BoxLayout:
+		orientation:'vertical'
+		canvas.before:
+			Color:
+				rgba:1, 1, 1,1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		ActionBar:
+			pos_hint: {'top':1}  #na parte superior da tela'
+			background_color: 0, 0, 0, 1
+			ActionView:             
+				ActionPrevious:
+					app_icon: 'imagens/voltar.png'            
+					#title:'Voltar'
+					on_release:
+						root.previous_screen_limpa()#acessa a class TESTE e utiliza a funcao
+						#root.clear_widgets()
+		ScrollView:
+			id:scroll
+			canvas.before:
+				Color:
+					rgba:1,1,1,.8
+				Rectangle:
+					pos:self.pos
+					size:self.size
+			BoxLayout:
+				orientation:'vertical'
+				size_hint_y:None
+				height:self.minimum_height
+				padding:root.width*0.02,root.height*0.02 #preencher
+				spacing:'80dp' #espacamento
+				id:qz
+				Botao:
+					id:bt
+					size_hint_y:None
+					size_hint_x:.5
+					pos_hint:{'center_x':.5,'center_y':.5}
+					height:'70dp'
+					text:'Clique para iniciar o novo jogo'
+					on_release:
+						#root.ids.qz.remove_widget(root.ids.bt)
+						#root.ids.qz.remove_widget(root.ids.qf)
+						#root.ids.qz.remove_widget(root.ids.qg)
+						root.desconstroi()
+						#root.constroi()
+						root.carregaWidgets()
+				BoxLayout:
+					id:qg
+					orientation:'vertical'
+					size_hint_y:None
+					height:self.minimum_height
+
+				BoxLayout:
+					id:qf
+					orientation:'vertical'
+					size_hint_y:None
+					height:self.minimum_height
+					padding:root.width*0.02,root.height*0.02 #preencher
+					spacing:'5dp' #espacamento
+					canvas.before:
+						Color:
+							rgba:0.10,0.05,0,1
+						RoundedRectangle:
+							size:self.size
+							pos:self.pos
+							radius:[25,25]
+
+
+
+<ImageButton>:
+	id:button
+	text:''
+	source: 'imagens/pergunta.png'
+	on_press:
+	on_release:root.troca(str(self.text))
+
+<Roundedbotao@ButtonBehavior+LabelBotao>:
+	pos_hint: {'center_x':.5,'center_y':.5}
+
+	canvas.before:
+		Color:
+			rgba: 0.30,0.14,0,.8
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: [25,25]
+
+<Inserenome>:
+	BoxLayout:
+		canvas.before:
+			Color:
+				rgba: 1,1,1,.8#0.30,0.14,0,1
+			RoundedRectangle:
+				pos: self.pos
+				size: self.size
+				radius: [50,]
+		TextInput:
+			id:texinp
+			size_hint:[.8,.8]
+			hint_text: 'Escreva seu nome'
+			font_size: '14dp'
+			background_color: 1,1,0,0
+			input_filter:lambda text, from_undo: text[:20 - len(self.text)]
+	BoxLayout:
+
+		size_hint:[.2,1]
+		Roundedbotao:
+			spacing:'40dp'
+			text:'Salvar'
+			on_release:root.salvanome()
+
+
+<Ranking>:
+	BoxLayout:
+		orientation:'vertical'
+		canvas.before:
+			Color:
+				rgba:1,1,1,1
+			Rectangle:
+				pos:self.pos
+				size:self.size
+		ActionBar:
+			pos_hint: {'top':1}  #na parte superior da tela'
+			background_color:0,0,0,1
+			size:self.size
+			ActionView:             
+				ActionPrevious:
+					app_icon: 'imagens/voltar.png'              
+					on_release:root.previous_screen_limpa()
+				ActionButton:
+					id:action
+					text:'Atualizar placar' 
+					on_release:root.teste()
+					cor:0.33,0.17,0.01,1
+					canvas.before:
+						Color:
+							rgba:self.cor
+						Rectangle:
+							pos:self.pos
+							size:self.size
+					
+		BoxLayout:
+			orientation:'horizontal'
+			size_hint:1,.1
+			canvas.before:
+				Color:
+					rgba:0.30,0.14,0,.9#25/255, 123/255, 98/255,1
+				Rectangle:
+					pos:self.pos
+					size:self.size
+			LabelBotao:
+				color:1,1,1,1
+				text:'N°'
+			LabelBotao:
+				color:1,1,1,1
+				text:'Nome'
+			LabelBotao:
+				color:1,1,1,1
+				text:'Pontos'
+			LabelBotao:
+				color:1,1,1,1
+				text:'Erros'
+			LabelBotao:
+				color:1,1,1,1
+				text:'Tempo'
+		ScrollView:
+			id:scroll
+			BoxLayout:
+				id:box
+				orientation:'vertical'
+				size_hint_y:None
+				height:self.minimum_height
+
+<BoxLayoutCustom>:
+	orientation:'horizontal'
+	size_hint_y:None
+	height:dp(50)
+	cor:0.4,0.2,0.1,.8
+	canvas:
+		Color:
+			rgba:self.cor
+		Rectangle:
+			pos:self.pos
+			size:self.size
+<BoxLayoutCustom2>:
+	orientation:'horizontal'
+	size_hint_y:None
+	height:dp(50)
+	cor:0.4,0.2,0.1,.8
+	canvas:
+		Color:
+			rgba:self.cor
+		RoundedRectangle:
+			pos:self.pos
+			size:self.size
+			radius:[10,100]
+<Loading>:
+	id:load
+	orientation:'vertical'
+	size_hint_y:None
+	height:dp(500)
+	cor:1,1,1,.3
+	canvas:
+		Color:
+			rgba:self.cor
+		RoundedRectangle:
+			pos:self.pos
+			size:self.size
+			radius:[10,100]
+	AsyncImage:
+		source:"imagens/loading.gif"
+		anim_delay:0.05
+<Tarefa_two>:
+	orientation:'horizontal'
+	size_hint_y:None
+	height:dp(50)
+	LabelBotao:
+		id:label
+		color:1,1,1,1
+		font_size:dp(20)
+<Tarefa>:
+	orientation:'horizontal'
+	size_hint_y:None
+	height:dp(50)
+	LabelBotao:
+		id:label
+		color:0,0,0,1
+		font_size:dp(20)
+<Popcustom>:
+	ScrollView:
+		id:scroll
+
+		BoxLayout:
+			id:box
+			padding:root.width*0.10,root.height*0.1 #preencher
+			spacing:'10dp' #espacamento
+
+			orientation:'vertical'
+			size_hint_y:None
+			height:self.minimum_height
+			canvas.before:
+				Color:
+					rgba:0,0,0,0
+				RoundedRectangle:
+					size:self.size
+					pos:self.pos
+					radius:[25,25]
+<InserenomeMemory>:
+	BoxLayout:
+		id:box1
+		TextInput:
+			id:texinp
+			# pos_hint:{'center_x':.5,'center_y':.5}
+			on_focus : root.redmensiona()
+			halign: 'center'
+			valign: 'center'
+			foreground_color:1,1,1,1
+			hint_text: 'Escreva seu nome'
+			hint_text_color: 1,1,1,.5 #cor para adc text
+			font_size: '16dp'
+			background_color: 0,0,0,0
+			input_filter:lambda text, from_undo: text[:20 - len(self.text)]
+			
+	BoxLayout:
+		id:box2
+		size_hint:[.3,.7]
+		pos_hint:{'x':1,'center_y':.5}
+		Button:
+			id:bt
+			text:'Salvar'
+			background_color:0,0,0,0
+			on_release:
+				root.salvanome()
+				root.finishScroll(scroll = self.parent.parent.parent.parent.parent)
+				root.ids.box1.remove_widget(root.ids.texinp)
+				root.ids.box2.remove_widget(root.ids.bt)
+
+			canvas.before:
+				Color:
+					rgba:0,0.20,0,1
+				RoundedRectangle:
+					pos:self.pos
+					size:self.size
+					radius:[10,100]
+<Inserenome2>:
+	BoxLayout:
+		id:box1
+		TextInput:
+			id:texinp
+			# pos_hint:{'center_x':.5,'center_y':.5}
+			halign: 'center'
+			valign: 'center'
+			foreground_color:1,1,1,1
+			hint_text: 'Escreva seu nome'
+			hint_text_color: 1,1,1,.5 #cor para adc text
+			font_size: '16dp'
+			background_color: 0,0,0,0
+			input_filter:lambda text, from_undo: text[:20 - len(self.text)]
+			on_focus : root.redmensiona()
+
+
+	BoxLayout:
+		id:box2
+		size_hint:[.3,.7]
+		pos_hint:{'x':1,'center_y':.5}
+		Button:
+			id:bt
+			text:'Salvar'
+			background_color:0,0,0,0
+			on_release:
+				root.salvanome()
+				root.finishScroll(scroll = self.parent.parent.parent.parent.parent)
+				#texinp.disabled = True
+				root.ids.box1.remove_widget(root.ids.texinp)
+				root.ids.box2.remove_widget(root.ids.bt)
+
+			canvas.before:
+				Color:
+					rgba:0,0.20,0,1
+				RoundedRectangle:
+					pos:self.pos
+					size:self.size
+					radius:[10,100]
+
+<Botao_custom@ButtonBehavior+LabelBotao>:
+	pos_hint: {'center_x':.5,'center_y':.5}
+	size_hint:1,1
+	rgba:0.30,0.14,0,.4
+	canvas.before:
+		Color:
+			rgba:self.rgba #marrom 77/255,38/255,0,1 #azul 0.1,0.5,0.7,1
+		RoundedRectangle:
+			pos:self.pos
+			size:self.size
+			radius:[10,100]
+		
+				
